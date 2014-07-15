@@ -33,7 +33,8 @@ namespace Geta.SEO.Sitemaps.Repositories
             
             var host = url.Path.TrimStart('/').ToLower();
 
-            return SitemapStore.Items<SitemapData>().FirstOrDefault(x => x.Host.ToLower() == host && (x.SiteUrl == null || x.SiteUrl.Contains(url.Host)));
+            var siteMapData = SitemapStore.Items<SitemapData>().FirstOrDefault(x => x.Host.ToLower() == host && (x.SiteUrl == null || x.SiteUrl.Contains(url.Host)));
+            return siteMapData ?? SitemapStore.Items<SitemapData>().FirstOrDefault(x => x.Host.ToLower() == host);
         }
 
         public IList<SitemapData> GetAllSitemapData()

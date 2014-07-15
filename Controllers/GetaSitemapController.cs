@@ -19,7 +19,7 @@ namespace Geta.SEO.Sitemaps.Controllers
 
             if (sitemapData == null || sitemapData.Data == null)
             {
-                Log.Error("Xml sitemap data not found!");
+                Log.Error(string.Format("Xml sitemap data not found for request url: {0}", Request.Url));
                 return new HttpNotFoundResult();
             }
 
